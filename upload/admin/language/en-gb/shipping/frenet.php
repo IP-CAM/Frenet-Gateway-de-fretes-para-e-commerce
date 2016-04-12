@@ -3,6 +3,8 @@
 $_['heading_title']       = 'Frenet';
 
 // Text
+$_['text_enabled']        = 'Habilitado';
+$_['text_disabled']       = 'Desabilitado';
 $_['text_edit']           = 'Editar o módulo Frenet';
 $_['text_shipping']       = 'Formas de Envio';
 $_['text_success']        = 'Módulo Frenet atualizado com sucesso!';

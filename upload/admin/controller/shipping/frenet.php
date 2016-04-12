@@ -22,7 +22,6 @@ class ControllerShippingfrenet extends Controller {
 		$data['text_edit'] = $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
-		$data['text_all_zones'] = $this->language->get('text_all_zones');
 		$data['text_none'] = $this->language->get('text_none');
 		$data['text_yes'] = $this->language->get('text_yes');
 		$data['text_no'] = $this->language->get('text_no');
@@ -35,8 +34,6 @@ class ControllerShippingfrenet extends Controller {
         $data['entry_frenet_key_senha'] = $this->language->get('entry_frenet_key_senha');
 
 		$data['entry_cost'] = $this->language->get('entry_cost');
-		$data['entry_tax_class'] = $this->language->get('entry_tax_class');
-		$data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
@@ -86,16 +83,7 @@ class ControllerShippingfrenet extends Controller {
 		} else {
 			$data['frenet_status'] = $this->config->get('frenet_status');
 		}
-		if (isset($this->request->post['frenet_tax_class_id'])) {
-			$data['frenet_tax_class_id'] = $this->request->post['frenet_tax_class_id'];
-		} else {
-			$data['frenet_tax_class_id'] = $this->config->get('frenet_tax_class_id');
-		}
-		if (isset($this->request->post['frenet_geo_zone_id'])) {
-			$data['frenet_geo_zone_id'] = $this->request->post['frenet_geo_zone_id'];
-		} else {
-			$data['frenet_geo_zone_id'] = $this->config->get('frenet_geo_zone_id');
-		}
+
 		if (isset($this->request->post['frenet_postcode'])) {
 			$data['frenet_postcode'] = $this->request->post['frenet_postcode'];
 		} else {
@@ -123,14 +111,7 @@ class ControllerShippingfrenet extends Controller {
 		} else {
 			$data['frenet_sort_order'] = $this->config->get('frenet_sort_order');
 		}
-		$this->load->model('localisation/tax_class');
-		
-		$data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();
-		
-		$this->load->model('localisation/geo_zone');
-		
-		$data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
-		
+
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
