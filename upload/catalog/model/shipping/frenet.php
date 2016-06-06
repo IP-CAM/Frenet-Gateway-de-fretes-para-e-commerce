@@ -7,7 +7,8 @@ class ModelShippingfrenet extends Model {
 	
 	private $cep_destino;
 	private $cep_origem;
-	
+	private $pais_destino;
+
 	private $mensagem_erro = array();
 
 	// função responsável pelo retorno à loja dos valores finais dos valores dos fretes
@@ -22,6 +23,13 @@ class ModelShippingfrenet extends Model {
         // obtém só a parte numérica do CEP
         $this->cep_origem = preg_replace ("/[^0-9]/", '', $this->config->get('frenet_postcode'));
         $this->cep_destino = preg_replace ("/[^0-9]/", '', $address['postcode']);
+
+        $this->pais_destino='BR';
+        $this->load->model('localisation/country');
+        $country_info = $this->model_localisation_country->getCountry($address['country_id']);
+        if ($country_info) {
+            $this->pais_destino = $country_info['iso_code_2'];
+        }
 
         // product array
         $shippingItemArray = array();
@@ -53,7 +61,8 @@ class ModelShippingfrenet extends Model {
                 'RecipientCEP' => $this->cep_destino,
                 'RecipientDocument' => '',
                 'ShipmentInvoiceValue' => $this->cart->getSubTotal(),
-                'ShippingItemArray' => $shippingItemArray
+                'ShippingItemArray' => $shippingItemArray,
+                'RecipientCountry' => $this->pais_destino
             )
         );
         //$this->log->write('service_param: ' . print_r($service_param, true));
