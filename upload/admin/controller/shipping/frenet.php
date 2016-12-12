@@ -13,8 +13,12 @@ class ControllerShippingfrenet extends Controller {
 			$this->model_setting_setting->editSetting('frenet', $this->request->post);		
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-			
-			$this->response->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
+
+            if(version_compare(VERSION, '2.2.0.0', '>')) {
+                $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL'));
+            } else {
+			    $this->response->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
+            }
 		}
 		
 		$data['heading_title'] = $this->language->get('heading_title');
