@@ -12,7 +12,11 @@ class ModelShippingfrenet extends Model {
 	private $mensagem_erro = array();
 
 	// função responsável pelo retorno à loja dos valores finais dos valores dos fretes
-	public function getQuote($address) {
+    /**
+     * @param $address
+     * @return array
+     */
+    public function getQuote($address) {
 		
 		$this->load->language('shipping/frenet');
 
@@ -36,6 +40,7 @@ class ModelShippingfrenet extends Model {
         $count = 0;
 
         foreach ($produtos as $prod) {
+			$qty = $prod['quantity'];
             $shippingItem = new stdClass();
 
             $shippingItem->Weight = $this->getPesoEmKg($prod['weight_class_id'], $prod['weight']);
@@ -47,7 +52,9 @@ class ModelShippingfrenet extends Model {
             $shippingItem->Category = '';
             $shippingItem->isFragile=false;
 
-            $this->log->write( 'shippingItem: ' . print_r($shippingItem, true));
+         //   $this->log->write( 'shippingItem: ' . print_r($shippingItem, true));
+		 
+			$shippingItem->Quantity = $qty;
 
             $shippingItemArray[$count] = $shippingItem;
             $count++;
@@ -70,8 +77,11 @@ class ModelShippingfrenet extends Model {
         $this->setUrl();
 
         // Gets the WebServices response.
+        ini_set('soap.wsdl_cache_enabled', '0');
         $client = new SoapClient($this->url, array("soap_version" => SOAP_1_1,"trace" => 1));
         $response = $client->__soapCall("GetShippingQuote", array($service_param));
+
+
 
         //$this->log->write(  $client->__getLastRequest());
         //$this->log->write(  $client->__getLastResponse());
