@@ -1,5 +1,5 @@
 <?php
-class ModelShippingfrenet extends Model {
+class ModelExtensionShippingFrenet extends Model {
 
 	private $servicos 	= array();
 	private $url = '';
@@ -18,7 +18,7 @@ class ModelShippingfrenet extends Model {
      */
     public function getQuote($address) {
 		
-		$this->load->language('shipping/frenet');
+		$this->load->language('extension/shipping/frenet');
 
 		$method_data = array();
 
@@ -43,7 +43,7 @@ class ModelShippingfrenet extends Model {
 			$qty = $prod['quantity'];
             $shippingItem = new stdClass();
 
-            $shippingItem->Weight = $this->getPesoEmKg($prod['weight_class_id'], $prod['weight']);
+            $shippingItem->Weight = $this->getPesoEmKg($prod['weight_class_id'], $prod['weight']) / $qty;
             $shippingItem->Length = $this->getDimensaoEmCm($prod['length_class_id'], $prod['length']);
             $shippingItem->Height = $this->getDimensaoEmCm($prod['length_class_id'], $prod['height']);
             $shippingItem->Width = $this->getDimensaoEmCm($prod['length_class_id'], $prod['width']);
