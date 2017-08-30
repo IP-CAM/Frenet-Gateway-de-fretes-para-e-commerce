@@ -10,11 +10,11 @@ class ControllerExtensionShippingFrenet extends Controller {
 		$this->load->model('setting/setting');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('frenet', $this->request->post);		
+			$this->model_setting_setting->editSetting('shipping_frenet', $this->request->post);		
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=shipping', true));
+            $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=shipping', true));
 
 		}
 		
@@ -64,53 +64,53 @@ class ControllerExtensionShippingFrenet extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
         );
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_shipping'),
-            'href' => $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=shipping', true)
+            'href' => $this->url->link('extension/extension', 'user_token=' . $this->session->data['user_token'], true)
         );
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('extension/shipping/frenet', 'token=' . $this->session->data['token'], 'SSL')
+            'href' => $this->url->link('extension/shipping/frenet', 'user_token=' . $this->session->data['user_token'], true)
         );
 
-        $data['action'] = $this->url->link('extension/shipping/frenet', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action'] = $this->url->link('extension/shipping/frenet', 'user_token=' . $this->session->data['user_token'], true);
 
-        $data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=shipping', true);
+        $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=shipping', true);
 
-		if (isset($this->request->post['frenet_status'])) {
-			$data['frenet_status'] = $this->request->post['frenet_status'];
+		if (isset($this->request->post['shipping_frenet_status'])) {
+			$data['shipping_frenet_status'] = $this->request->post['shipping_frenet_status'];
 		} else {
-			$data['frenet_status'] = $this->config->get('frenet_status');
+			$data['shipping_frenet_status'] = $this->config->get('shipping_frenet_status');
 		}
 
-		if (isset($this->request->post['frenet_postcode'])) {
-			$data['frenet_postcode'] = $this->request->post['frenet_postcode'];
+		if (isset($this->request->post['shipping_frenet_postcode'])) {
+			$data['shipping_frenet_postcode'] = $this->request->post['shipping_frenet_postcode'];
 		} else {
-			$data['frenet_postcode'] = $this->config->get('frenet_postcode');
+			$data['shipping_frenet_postcode'] = $this->config->get('shipping_frenet_postcode');
 		}
-        if (isset($this->request->post['frenet_msg_prazo'])) {
-            $data['frenet_msg_prazo'] = $this->request->post['frenet_msg_prazo'];
+        if (isset($this->request->post['shipping_frenet_msg_prazo'])) {
+            $data['shipping_frenet_msg_prazo'] = $this->request->post['shipping_frenet_msg_prazo'];
         } else {
-            $data['frenet_msg_prazo'] = $this->config->get('frenet_msg_prazo');
+            $data['shipping_frenet_msg_prazo'] = $this->config->get('shipping_frenet_msg_prazo');
         }
 
-		if (isset($this->request->post['frenet_contrato_codigo'])) {
-			$data['frenet_contrato_codigo'] = $this->request->post['frenet_contrato_codigo'];
+		if (isset($this->request->post['shipping_frenet_contrato_codigo'])) {
+			$data['shipping_frenet_contrato_codigo'] = $this->request->post['shipping_frenet_contrato_codigo'];
 		} else {
-			$data['frenet_contrato_codigo'] = $this->config->get('frenet_contrato_codigo');
+			$data['shipping_frenet_contrato_codigo'] = $this->config->get('shipping_frenet_contrato_codigo');
 		}
-		if (isset($this->request->post['frenet_contrato_senha'])) {
-			$data['frenet_contrato_senha'] = $this->request->post['frenet_contrato_senha'];
+		if (isset($this->request->post['shipping_frenet_contrato_senha'])) {
+			$data['shipping_frenet_contrato_senha'] = $this->request->post['shipping_frenet_contrato_senha'];
 		} else {
-			$data['frenet_contrato_senha'] = $this->config->get('frenet_contrato_senha');
+			$data['shipping_frenet_contrato_senha'] = $this->config->get('shipping_frenet_contrato_senha');
 		}						
 
-		if (isset($this->request->post['frenet_sort_order'])) {
-			$data['frenet_sort_order'] = $this->request->post['frenet_sort_order'];
+		if (isset($this->request->post['shipping_frenet_sort_order'])) {
+			$data['shipping_frenet_sort_order'] = $this->request->post['shipping_frenet_sort_order'];
 		} else {
-			$data['frenet_sort_order'] = $this->config->get('frenet_sort_order');
+			$data['shipping_frenet_sort_order'] = $this->config->get('shipping_frenet_sort_order');
 		}
 
 		$data['header'] = $this->load->controller('common/header');

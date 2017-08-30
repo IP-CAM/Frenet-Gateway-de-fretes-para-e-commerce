@@ -25,7 +25,7 @@ class ModelExtensionShippingFrenet extends Model {
         $produtos = $this->cart->getProducts();
 
         // obtém só a parte numérica do CEP
-        $this->cep_origem = preg_replace ("/[^0-9]/", '', $this->config->get('frenet_postcode'));
+        $this->cep_origem = preg_replace ("/[^0-9]/", '', $this->config->get('shipping_frenet_postcode'));
         $this->cep_destino = preg_replace ("/[^0-9]/", '', $address['postcode']);
 
         $this->pais_destino='BR';
@@ -62,8 +62,8 @@ class ModelExtensionShippingFrenet extends Model {
 
         $service_param = array (
             'quoteRequest' => array(
-                'Username' => $this->config->get('frenet_contrato_codigo'),
-                'Password' => $this->config->get('frenet_contrato_senha'),
+                'Username' => $this->config->get('shipping_frenet_contrato_codigo'),
+                'Password' => $this->config->get('shipping_frenet_contrato_senha'),
                 'SellerCEP' => $this->cep_origem,
                 'RecipientCEP' => $this->cep_destino,
                 'RecipientDocument' => '',
@@ -106,8 +106,8 @@ class ModelExtensionShippingFrenet extends Model {
                 if (isset($servicos->DeliveryTime))
                     $deliveryTime=$servicos->DeliveryTime;
 
-                if ( $deliveryTime > 0 && $this->config->get('frenet_msg_prazo') ) {
-                    $label = sprintf($this->config->get('frenet_msg_prazo'), $servicos->ServiceDescription, (int)$deliveryTime);
+                if ( $deliveryTime > 0 && $this->config->get('shipping_frenet_msg_prazo') ) {
+                    $label = sprintf($this->config->get('shipping_frenet_msg_prazo'), $servicos->ServiceDescription, (int)$deliveryTime);
                 }
                 else{
                     $label = $servicos->ServiceDescription;
@@ -138,7 +138,7 @@ class ModelExtensionShippingFrenet extends Model {
                 'code'       => 'frenet',
                 'title'      => $this->language->get('text_title'),
                 'quote'      => $this->quote_data,
-                'sort_order' => $this->config->get('frenet_sort_order'),
+                'sort_order' => $this->config->get('shipping_frenet_sort_order'),
                 'error'      => false
             );
         }
@@ -147,7 +147,7 @@ class ModelExtensionShippingFrenet extends Model {
                 'code'       => 'frenet',
                 'title'      => $this->language->get('text_title'),
                 'quote'      => $this->quote_data,
-                'sort_order' => $this->config->get('frenet_sort_order'),
+                'sort_order' => $this->config->get('shipping_frenet_sort_order'),
                 'error'      => implode('<br />', $this->mensagem_erro)
             );
         }
