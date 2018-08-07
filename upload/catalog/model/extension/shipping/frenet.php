@@ -11,6 +11,14 @@ class ModelExtensionShippingFrenet extends Model {
 
 	private $mensagem_erro = array();
 
+    protected function get_coupon() {
+        if (!isset($this->session->data['coupon'])) {
+            return null;
+        }
+
+        return $this->session->data['coupon'];
+    }
+
 	// função responsável pelo retorno à loja dos valores finais dos valores dos fretes
     /**
      * @param $address
@@ -60,10 +68,16 @@ class ModelExtensionShippingFrenet extends Model {
             $count++;
         }
 
+        $coupon = $this->get_coupon();
+
         $service_param = array (
             'quoteRequest' => array(
                 'Username' => $this->config->get('shipping_frenet_contrato_codigo'),
                 'Password' => $this->config->get('shipping_frenet_contrato_senha'),
+                'Token' => $this->config->get('shipping_frenet_contrato_token'),
+                'Coupom' => $coupon,
+                'PlatformName' => 'Magento',
+                'PlatformVersion' => VERSION,
                 'SellerCEP' => $this->cep_origem,
                 'RecipientCEP' => $this->cep_destino,
                 'RecipientDocument' => '',
@@ -155,10 +169,18 @@ class ModelExtensionShippingFrenet extends Model {
 		return $method_data;
 	}
 
-	// prepara a url de chamada ao site dos frenet
+    	// prepara a url de chamada ao site dos frenet
 	private function setUrl(){
 		
 		$url = "http://services.frenet.com.br/logistics/ShippingQuoteWS.asmx?wsdl";
+
+		$this->url = $url;
+	}
+
+	// prepara a url de chamada ao site dos frenet
+	private function setApiUrl(){
+		
+		$url = "http://api.frenet.com.br/shipping/quote";
 
 		$this->url = $url;
 	}

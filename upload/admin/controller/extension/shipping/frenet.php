@@ -33,12 +33,15 @@ class ControllerExtensionShippingFrenet extends Controller {
         $data['entry_frenet_key'] = $this->language->get('entry_frenet_key');
         $data['entry_frenet_key_codigo'] = $this->language->get('entry_frenet_key_codigo');
         $data['entry_frenet_key_senha'] = $this->language->get('entry_frenet_key_senha');
+		
+		$data['entry_frenet_token'] = $this->language->get('entry_frenet_token');
+		$data['entry_frenet_key_token'] = $this->language->get('entry_frenet_key_token');
 
 		$data['entry_cost'] = $this->language->get('entry_cost');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
-
+		$data['help_frenet_token'] = $this->language->get('help_frenet_token');
 		$data['help_frenet_key'] = $this->language->get('help_frenet_key');
         $data['help_msg_prazo'] = $this->language->get('help_msg_prazo');
 		
@@ -105,7 +108,13 @@ class ControllerExtensionShippingFrenet extends Controller {
 			$data['shipping_frenet_contrato_senha'] = $this->request->post['shipping_frenet_contrato_senha'];
 		} else {
 			$data['shipping_frenet_contrato_senha'] = $this->config->get('shipping_frenet_contrato_senha');
-		}						
+		}
+		
+		if (isset($this->request->post['shipping_frenet_contrato_token'])) {
+			$data['shipping_frenet_contrato_token'] = $this->request->post['shipping_frenet_contrato_token'];
+		} else {
+			$data['shipping_frenet_contrato_token'] = $this->config->get('shipping_frenet_contrato_token');
+		}
 
 		if (isset($this->request->post['shipping_frenet_sort_order'])) {
 			$data['shipping_frenet_sort_order'] = $this->request->post['shipping_frenet_sort_order'];

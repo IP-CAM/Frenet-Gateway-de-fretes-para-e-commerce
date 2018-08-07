@@ -40,6 +40,7 @@
                     <input type="text" name="frenet_msg_prazo" value="<?php echo $frenet_msg_prazo; ?>" placeholder="<?php echo $help_msg_prazo; ?>" id="input-msg_prazo" class="form-control" />
                 </div>
             </div>
+          
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-contrato-codigo"><span data-toggle="tooltip" title="<?php echo $help_frenet_key; ?>"><?php echo $entry_frenet_key; ?></span></label>
             <div class="col-sm-10">
@@ -55,6 +56,20 @@
               </div>
             </div>
           </div>
+
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-contrato-token"><span data-toggle="tooltip" title="<?php echo $help_frenet_token; ?>"><?php echo $entry_frenet_token; ?></span></label>
+            <div class="col-sm-10">
+              <div class="row">
+                <div class="col-sm-4">
+                  <input type="text" name="frenet_contrato_token" value="<?php echo $frenet_contrato_token; ?>" placeholder="<?php echo $entry_frenet_key_token; ?>" id="input-contrato-token" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
             <div class="col-sm-10">
