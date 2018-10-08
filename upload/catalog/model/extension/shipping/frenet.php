@@ -86,6 +86,9 @@ class ModelExtensionShippingFrenet extends Model {
                 'RecipientCountry' => $this->pais_destino
             )
         );
+
+        //invocarFrenet($service_param);
+
         //$this->log->write('service_param: ' . print_r($service_param, true));
 
         $this->setUrl();
@@ -94,8 +97,6 @@ class ModelExtensionShippingFrenet extends Model {
         ini_set('soap.wsdl_cache_enabled', '0');
         $client = new SoapClient($this->url, array("soap_version" => SOAP_1_1,"trace" => 1));
         $response = $client->__soapCall("GetShippingQuote", array($service_param));
-
-
 
         //$this->log->write(  $client->__getLastRequest());
         //$this->log->write(  $client->__getLastResponse());
