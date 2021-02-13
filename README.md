@@ -1,6 +1,3 @@
-! [Frenet_logo_painel.png] (https://painel.frenet.com.br/Content/images/Frenet_logo_painel.png)
-# [Frenet - Freight gateway for e-commerce] (http://www.www.frenet.com.br) #
-
 ## - Frenet Module for Opencart - ##
 
 ### Links ###
