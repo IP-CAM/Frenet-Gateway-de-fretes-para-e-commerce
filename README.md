@@ -1,33 +1,33 @@
-![Frenet_logo_painel.png](https://painel.frenet.com.br/Content/images/Frenet_logo_painel.png)
-# [Frenet - Gateway de fretes para e-commerce](http://www.www.frenet.com.br) #
+! [Frenet_logo_painel.png] (https://painel.frenet.com.br/Content/images/Frenet_logo_painel.png)
+# [Frenet - Freight gateway for e-commerce] (http://www.www.frenet.com.br) #
 
-## -- Módulo Frenet para Opencart -- ##
+## - Frenet Module for Opencart - ##
 
 ### Links ###
-* [Painel Administrativo](https://painel.frenet.com.br)
-* [Central de Ajuda](https://frenet.zendesk.com/)
-* [Loja de Aplicativos Opencart](https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=26072)
+* [Administrative Panel] (https://painel.frenet.com.br)
+* [Help Center] (https://frenet.zendesk.com/)
+* [Opencart App Store] (https://www.opencart.com/index.php?route=marketplace/extension/info&extension_id=26072)
 
-Painel admistrativo
+Administrative panel
 ------------------------------------
 
-Primeiramente você deve se cadastrar no painel administrativo do Frenet para obter uma chave de acesso para ser utilizada no módulo.
+First, you must register with the Frenet administrative panel to obtain an access key to be used in the module.
 https://painel.frenet.com.br/
 
-Instalação
+Installation
 ------------------------
 
-1 - Instale o módulo pelo admin (Extensões -> Instalador).<br /> 
-2 - Configure as opções do módulo Frenet (Extensões -> Fretes).
+1 - Install the module through the admin (Extensions -> Installer). <br />
+2 - Configure the Frenet module options (Extensions -> Freight).
 
-Configuração
+Settings
 ---------------------------
-1 - CEP de Origem: Informe o CEP do local de origem das cotações de frete.<br />
-2 - Mensagem que exibe o prazo de entrega: Caso seja informada sistema irá montar uma mensagem amigavél ao usuário substituindo o %s e o %d respectivamente por método de entrega e quantidade de dias. Ex: %s - Em média %d dia(s)<br />
-3 - Chave de acesso - Chave: Usuário de acesso ao webservice do Frenet (acesse o painel administrativo, em Dados Cadastrais, obtenha esta informação<br />
-4 - Chave de acesso - Senha: Senha de acesso ao webservice do Frenet (acesse o painel administrativo, em Dados Cadastrais, obtenha esta informação<br />
-5 - Situação: Habilite o módulo para utilizá-lo
+1 - Zip Code of Origin: Inform the zip code of the place of origin of the freight quotations. <br />
+2 - Message that displays the delivery time: If informed, the system will mount a friendly message to the user, replacing% s and% d respectively with delivery method and number of days. Ex:% s - On average% d day (s) <br />
+3 - Access key - Key: User accessing the Frenet web service (access the administrative panel, under Cadastral Data, obtain this information <br />
+4 - Access key - Password: Password for access to the Frenet web service (access the administrative panel, under Cadastral Data, obtain this information <br />
+5 - Situation: Enable the module to use it
 
-Observações
+Comments
 ---------------------------
-* Para o correto funcionamento do módulo é essencial o cadastro correto das dimensões e pesos do produtos e CEP de origem.
+* For the correct functioning of the module, it is essential to correctly register the dimensions and weights of the products and origin zip code. 
