@@ -104,12 +104,15 @@ class ModelExtensionShippingFrenet extends Model {
         $values = array();
 
         if ( isset( $response->GetShippingQuoteResult ) && isset($response->GetShippingQuoteResult->ShippingSevicesArray)
-            && isset($response->GetShippingQuoteResult->ShippingSevicesArray->ShippingSevices)) {
-            if(count($response->GetShippingQuoteResult->ShippingSevicesArray->ShippingSevices)==1)
-                $servicosArray[0] = $response->GetShippingQuoteResult->ShippingSevicesArray->ShippingSevices;
-            else
-                $servicosArray = $response->GetShippingQuoteResult->ShippingSevicesArray->ShippingSevices;
-
+                    && isset($response->GetShippingQuoteResult->ShippingSevicesArray->ShippingSevices)) {
+                    $shippingServices = $response->GetShippingQuoteResult->ShippingSevicesArray->ShippingSevices;
+                    $count = count(is_array($shippingServices) ? $shippingServices : []);
+                    if($count == 1) {
+                        $servicosArray[0] = $shippingServices;
+                    } else {
+                        $servicosArray = $shippingServices;
+                    }
+					
             foreach($servicosArray as $servicos){
                 if (!isset($servicos->ServiceCode) || $servicos->ServiceCode . '' == '' || !isset($servicos->ShippingPrice)) {
                     continue;
